@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9fc">
+  <meta name="description" content="Faça seu pedido na Loka do Açaí.">
+  <title>Pedidos | Loka do Açaí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pedidos.css">
+  <script src="pedidos.js" defer></script>
+</head>
+<body>
+  <header class="shop-header">
+    <div class="cover-photo"></div>
+    <div class="header-top">
+      <a class="back-to-site" href="index.html"><span aria-hidden="true">←</span> Voltar ao site</a>
+      <span class="demo-label">prévia do sistema de pedidos</span>
+    </div>
+    <div class="shop-profile">
+      <div class="shop-logo" aria-label="Logo Loka do Açaí"><span>loka</span><small>do</small><b>açaí</b></div>
+      <h1>Loka do açaí</h1>
+      <p>Açaí, sorvetes e cremes</p>
+    </div>
+  </header>
+
+  <main class="order-main">
+    <div class="order-toolbar">
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="Pesquisar produtos por nome ou descrição" autocomplete="off" aria-label="Pesquisar produtos"></label>
+      <button class="toolbar-button region-button" id="open-region" type="button"><span class="toolbar-icon" aria-hidden="true">⌖</span><span><small>Entrega para</small><strong id="selected-region">Escolher região</strong></span><span class="button-chevron" aria-hidden="true">⌄</span></button>
+      <button class="toolbar-button" id="open-account" type="button"><span class="toolbar-icon red" aria-hidden="true">▤</span><span><strong>Meus pedidos</strong></span></button>
+      <button class="toolbar-button delivery-button" id="open-delivery" type="button"><span class="toolbar-icon red" aria-hidden="true">!</span><span><small>Taxa e tempo</small><strong>De entrega</strong></span></button>
+    </div>
+
+    <div class="region-summary" aria-live="polite"><span class="status-dot"></span><span id="region-summary-text">Escolha sua região para direcionar o pedido à unidade responsável.</span><button id="change-region" type="button">Alterar região</button></div>
+    <div class="catalog-note"><span>i</span> Cardápio de demonstração: nomes, valores e fotos podem mudar antes do lançamento.</div>
+
+    <nav class="category-tabs" aria-label="Categorias do cardápio">
+      <a class="is-active" href="#promocao">Promoção</a>
+      <a href="#potes">Escolha o pote</a>
+    </nav>
+
+    <section class="catalog-section" id="promocao">
+      <h2><span aria-hidden="true">›</span> Promoção</h2>
+      <div class="product-grid" id="promo-products"></div>
+    </section>
+    <section class="catalog-section" id="potes">
+      <h2><span aria-hidden="true">›</span> Escolha o pote</h2>
+      <div class="product-grid" id="pot-products"></div>
+    </section>
+    <p class="no-results" id="no-results" hidden>Nenhum produto encontrado. Tente outra busca.</p>
+  </main>
+
+  <footer class="order-footer">
+    <a href="index.html">← Voltar para o site institucional</a>
+    <p>Fotos e produtos ilustrativos · Sistema de pedidos em demonstração</p>
+  </footer>
+
+  <button class="cart-fab" id="open-cart" type="button" aria-label="Abrir carrinho">
+    <span class="cart-fab-icon" aria-hidden="true">▣</span>
+    <span class="cart-fab-copy"><b>Meu carrinho</b><small id="cart-items-count">0 itens</small></span>
+    <strong id="cart-total-fab">R$ 0,00</strong>
+    <i id="cart-badge" hidden>0</i>
+  </button>
+
+  <div class="overlay" id="region-dialog" hidden>
+    <section class="dialog-card region-dialog-card" role="dialog" aria-modal="true" aria-labelledby="region-title">
+      <button class="dialog-close" type="button" data-close="region-dialog" aria-label="Fechar">×</button>
+      <span class="dialog-kicker">Entrega Loka</span>
+      <h2 id="region-title">Qual região vai receber seu pedido?</h2>
+      <p>Escolha uma região para identificar a unidade responsável no protótipo.</p>
+      <div class="region-options">
+        <button type="button" data-region="recife"><span class="region-pin">⌖</span><span><b>Recife e Região Metropolitana</b><small>Região demonstrativa</small></span><span class="region-arrow">→</span></button>
+        <button type="button" data-region="agreste"><span class="region-pin">⌖</span><span><b>Agreste</b><small>Região demonstrativa</small></span><span class="region-arrow">→</span></button>
+        <button type="button" data-region="sertao"><span class="region-pin">⌖</span><span><b>Sertão</b><small>Região demonstrativa</small></span><span class="region-arrow">→</span></button>
+        <button type="button" data-region="mata"><span class="region-pin">⌖</span><span><b>Zona da Mata</b><small>Região demonstrativa</small></span><span class="region-arrow">→</span></button>
+        <button type="button" data-region="outra"><span class="region-pin">⌖</span><span><b>Outra região de Pernambuco</b><small>Região demonstrativa</small></span><span class="region-arrow">→</span></button>
+      </div>
+      <small class="dialog-footnote">As regiões são exemplos. A cobertura e a loja serão definidas com os endereços oficiais.</small>
+    </section>
+  </div>
+
+  <div class="overlay" id="delivery-dialog" hidden>
+    <section class="dialog-card small-dialog" role="dialog" aria-modal="true" aria-labelledby="delivery-title">
+      <button class="dialog-close" type="button" data-close="delivery-dialog" aria-label="Fechar">×</button>
+      <span class="dialog-kicker">Entrega</span>
+      <h2 id="delivery-title">Taxa e tempo de entrega</h2>
+      <div class="delivery-status"><span class="status-dot"></span><div><small>Região selecionada</small><b id="delivery-region">Ainda não escolhida</b></div></div>
+      <p>A unidade responsável, a cobertura, o valor do frete e a previsão de entrega serão confirmados conforme o endereço. Esta prévia não consulta entregas reais.</p>
+      <button class="button-primary" id="delivery-choose-region" type="button">Escolher minha região</button>
+    </section>
+  </div>
+
+  <div class="overlay" id="account-dialog" hidden>
+    <section class="dialog-card account-dialog-card" role="dialog" aria-modal="true" aria-labelledby="account-title">
+      <button class="dialog-close" type="button" data-close="account-dialog" aria-label="Fechar">×</button>
+      <span class="dialog-kicker">Sua conta Loka</span>
+      <h2 id="account-title">Seus pedidos, do seu jeito.</h2>
+      <div class="account-tabs" role="tablist" aria-label="Área do cliente">
+        <button type="button" class="is-active" data-account-tab="profile" role="tab" aria-selected="true">Cadastro e endereços</button>
+        <button type="button" data-account-tab="history" role="tab" aria-selected="false">Histórico de pedidos</button>
+      </div>
+      <div class="account-panel" data-account-panel="profile">
+        <form id="profile-form" class="form-card">
+          <h3>Seus dados</h3>
+          <p>Salvos neste navegador para facilitar os próximos pedidos.</p>
+          <div class="form-grid">
+            <label class="field full">Nome completo<input name="name" autocomplete="name" required placeholder="Como podemos chamar você?"></label>
+            <label class="field">Celular<input name="phone" type="tel" autocomplete="tel" required placeholder="(00) 00000-0000"></label>
+            <label class="field">E-mail <span>opcional</span><input name="email" type="email" autocomplete="email" placeholder="voce@email.com"></label>
+          </div>
+          <button class="button-primary" type="submit">Salvar meu cadastro</button>
+        </form>
+        <section class="saved-addresses">
+          <div class="subheading"><div><h3>Endereços salvos</h3><p>Escolha um endereço para agilizar a entrega.</p></div></div>
+          <div id="saved-address-list" class="saved-address-list"></div>
+          <form id="address-form" class="form-card address-form">
+            <h4>Adicionar endereço</h4>
+            <div class="form-grid">
+              <label class="field">Apelido<input name="label" placeholder="Casa, trabalho..."></label>
+              <label class="field">CEP<input name="cep" autocomplete="postal-code" required placeholder="00000-000"></label>
+              <label class="field full">Rua / avenida<input name="street" autocomplete="address-line1" required></label>
+              <label class="field">Número<input name="number" required></label>
+              <label class="field">Bairro<input name="district" autocomplete="address-level3" required></label>
+              <label class="field">Cidade<input name="city" autocomplete="address-level2" required></label>
+              <label class="field">Complemento <span>opcional</span><input name="complement" autocomplete="address-line2"></label>
+            </div>
+            <button class="button-secondary" type="submit">Salvar endereço</button>
+          </form>
+        </section>
+      </div>
+      <div class="account-panel" data-account-panel="history" hidden>
+        <div class="history-intro"><h3>Seus pedidos</h3><p>Os pedidos de demonstração feitos neste navegador aparecem aqui.</p></div>
+        <div id="order-history-list" class="order-history-list"></div>
+      </div>
+      <p class="local-storage-note">Demonstração: cadastro, endereços e histórico ficam salvos somente neste navegador.</p>
+    </section>
+  </div>
+
+  <div class="overlay cart-overlay" id="cart-dialog" hidden>
+    <aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+      <div class="drawer-header"><div><span class="dialog-kicker">Seu pedido</span><h2 id="cart-title">Meu carrinho</h2></div><button class="dialog-close" type="button" data-close="cart-dialog" aria-label="Fechar">×</button></div>
+      <div class="cart-body">
+        <div id="cart-lines" class="cart-lines"></div>
+        <div class="checkout-block">
+          <div class="cart-subtotal"><span>Subtotal</span><b id="cart-subtotal">R$ 0,00</b></div>
+          <div class="cart-shipping"><span>Entrega</span><b>Confirmar com a unidade</b></div>
+          <div class="cart-region"><div><small>Unidade da região</small><b id="cart-region-name">Escolha sua região</b></div><button type="button" id="cart-change-region">Alterar</button></div>
+          <form id="checkout-form">
+            <h3>Onde entregar?</h3>
+            <label class="field saved-address-select">Usar endereço salvo<select id="checkout-address-select"><option value="">Preencher novo endereço</option></select></label>
+            <div class="form-grid">
+              <label class="field full">Nome completo<input name="name" autocomplete="name" required></label>
+              <label class="field">Celular<input name="phone" type="tel" autocomplete="tel" required></label>
+              <label class="field">CEP<input name="cep" autocomplete="postal-code" required></label>
+              <label class="field full">Rua / avenida<input name="street" autocomplete="address-line1" required></label>
+              <label class="field">Número<input name="number" required></label>
+              <label class="field">Bairro<input name="district" autocomplete="address-level3" required></label>
+              <label class="field">Cidade<input name="city" autocomplete="address-level2" required></label>
+              <label class="field">Complemento<input name="complement" autocomplete="address-line2"></label>
+            </div>
+            <label class="save-address-check"><input type="checkbox" name="saveAddress" checked><span>Salvar cadastro e endereço para os próximos pedidos</span></label>
+            <button class="button-primary checkout-submit" id="checkout-submit" type="submit">Confirmar pedido de demonstração</button>
+          </form>
+          <p class="checkout-disclaimer">Sem cobrança nem envio real: o pedido é registrado apenas como demonstração neste navegador.</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

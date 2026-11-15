@@ -1,19 +1,18 @@
-# Loka do Açaí — protótipo institucional
+# Loka do Açaí — protótipo institucional e pedidos
 
-Protótipo estático criado a partir da captura do Instagram disponível em Base.
+Protótipo estático criado a partir das referências compartilhadas para a Loka do Açaí.
 
 ## Abrir
 
-Abra index.html no navegador. Não precisa de instalação nem etapa de build. As fontes usam Google Fonts quando houver conexão e têm fontes de sistema como alternativa.
+Abra index.html para o site institucional ou pedidos.html para a página de pedidos. Não precisa de instalação nem etapa de build.
 
-## O que está no protótipo
+## Incluído
 
-- Página institucional responsiva em português.
-- Carrossel principal e mini-carrosséis independentes nos três cards, com avanço automático, setas, indicadores e gesto de arrastar no celular. Pausam ao passar o mouse ou focar e respeitam a preferência por movimento reduzido.
-- Animações de entrada ao rolar a página e interações suaves nos cards.
-- Links para o canal de pedidos e Instagram vistos na captura de referência.
-- Seções de produtos, história e eventos.
+- Site institucional responsivo com carrosséis.
+- Página de pedidos com busca, categorias, carrinho, quantidades e finalização demonstrativa.
+- Seletor de regiões de Pernambuco, cadastro, endereços salvos e histórico mantidos localmente no navegador.
+- Links entre o site institucional e a página de pedidos.
 
 ## Antes de publicar
 
-As fotos em assets foram geradas para demonstrar o layout, não são fotos oficiais do cardápio. Troque-as pelas imagens da marca e confirme cardápio, endereços das unidades, horários e canais de pedido. A linguagem e os textos também são uma proposta inicial para aprovação da equipe Loka do Açaí.
+Os nomes, preços e fotos na página de pedidos são demonstrativos. A seleção de região também não confirma cobertura, unidade, frete ou prazo reais. Fotos, cardápio, valores, endereços das unidades, disponibilidade, taxa de entrega, pagamentos e integração de pedidos precisam ser confirmados e ligados aos sistemas da loja. Os cadastros e pedidos ficam somente no armazenamento local do navegador; a versão de produção precisará de backend e autenticação.
