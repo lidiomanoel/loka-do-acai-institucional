@@ -10,9 +10,9 @@ Abra index.html para o site institucional ou pedidos.html para a página de pedi
 
 - Site institucional responsivo com carrosséis.
 - Página de pedidos com busca, categorias, carrinho, quantidades e finalização demonstrativa.
-- Seletor de regiões de Pernambuco, cadastro, endereços salvos e histórico mantidos localmente no navegador.
+- Seletor para Ponte dos Carvalhos, Cohab, Garapu e Tamandaré; cadastro, endereços salvos e histórico mantidos localmente no navegador.
 - Links entre o site institucional e a página de pedidos.
 
 ## Antes de publicar
 
-Os nomes, preços e fotos na página de pedidos são demonstrativos. A seleção de região também não confirma cobertura, unidade, frete ou prazo reais. Fotos, cardápio, valores, endereços das unidades, disponibilidade, taxa de entrega, pagamentos e integração de pedidos precisam ser confirmados e ligados aos sistemas da loja. Os cadastros e pedidos ficam somente no armazenamento local do navegador; a versão de produção precisará de backend e autenticação.
+Os nomes, preços e fotos na página de pedidos são demonstrativos. A unidade por endereço, o frete e o prazo ainda precisam ser confirmados para as quatro áreas informadas. Fotos, cardápio, valores, endereços das unidades, disponibilidade, taxa de entrega, pagamentos e integração de pedidos precisam ser confirmados e ligados aos sistemas da loja. Os cadastros e pedidos ficam somente no armazenamento local do navegador; a versão de produção precisará de backend e autenticação.

@@ -1,10 +1,9 @@
 (() => {
   const regions = {
-    recife: "Recife e Região Metropolitana",
-    agreste: "Agreste",
-    sertao: "Sertão",
-    mata: "Zona da Mata",
-    outra: "Outra região de Pernambuco"
+    "ponte-dos-carvalhos": "Ponte dos Carvalhos",
+    cohab: "Cohab",
+    garapu: "Garapu",
+    tamandare: "Tamandaré"
   };
   const products = [
     {id:"familia-1kg",name:"Açaí família 1 kg",category:"promo",description:"1 kg para dividir. Escolha açaí, creme ou sorvete e monte com seus acompanhamentos.",price:49.99,oldPrice:59.99,discount:"17%",image:"assets/sorvete-na-chapa.png"},
@@ -45,6 +44,7 @@
   let addresses = readStore(storageKeys.addresses, []);
   let history = readStore(storageKeys.history, []);
   let activeRegion = readStore(storageKeys.region, "");
+  if (!regions[activeRegion]) activeRegion = "";
   let toastTimer = null;
 
   const promoGrid = document.getElementById("promo-products");
