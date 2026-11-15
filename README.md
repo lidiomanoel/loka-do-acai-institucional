@@ -9,7 +9,8 @@ Abra index.html no navegador. Não precisa de instalação nem etapa de build. A
 ## O que está no protótipo
 
 - Página institucional responsiva em português.
-- Carrossel automático com controles, indicadores, pausa ao passar o mouse ou focar e respeito à preferência por movimento reduzido.
+- Carrossel principal e mini-carrosséis independentes nos três cards, com avanço automático, setas, indicadores e gesto de arrastar no celular. Pausam ao passar o mouse ou focar e respeitam a preferência por movimento reduzido.
+- Animações de entrada ao rolar a página e interações suaves nos cards.
 - Links para o canal de pedidos e Instagram vistos na captura de referência.
 - Seções de produtos, história e eventos.
 
